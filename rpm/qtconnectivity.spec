@@ -34,7 +34,7 @@ Summary:    QtBluetooth
 Group:      Qt/Qt
 Requires:   %{name} = %{version}-%{release}
 
-%description devel
+%description qtbluetooth
 Qt is a cross-platform application and UI framework. Using Qt, you can
 write web-enabled applications once and deploy them across desktop,
 mobile and embedded systems without rewriting the source code.
