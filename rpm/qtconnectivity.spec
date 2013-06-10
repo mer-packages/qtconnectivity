@@ -40,7 +40,7 @@ This package contains the Qt connectivity module development files
 #### Build section
 
 %prep
-%setup -q -n %{name}-%{version}/qtlocation 
+%setup -q -n %{name}-%{version}/qtconnectivity 
 
 %build
 export QTDIR=/usr/share/qt5
