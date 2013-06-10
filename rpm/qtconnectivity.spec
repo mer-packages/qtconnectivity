@@ -101,18 +101,17 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 
 %files qtbluetooth
 %defattr(-,root,root,-)
-%{_libdir}/libQt5Bluetooth.so.0
-%{_libdir}/libQt5Location.so.0.*
+%{_libdir}/libQt0Bluetooth.so.0
+%{_libdir}/libQt0Bluetooth.so.0.*
 %{_libdir}/qt5/qml/QtBluetooth
 
 %files qtbluetooth-devel
 %defattr(-,root,root,-)
-%{_libdir}/libQt5Bluetooth.so
-%{_libdir}/libQt5Bluetooth.prl
+%{_libdir}/libQt0Bluetooth.so
+%{_libdir}/libQt0Bluetooth.prl
 %{_libdir}/pkgconfig/*
 %{_includedir}/qt5/*
 %{_datadir}/qt5/mkspecs/
 %{_libdir}/cmake/Qt5Bluetooth/
 
 
-#### No changelog section, separate $pkg.changelog contains the history
