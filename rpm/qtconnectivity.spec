@@ -88,9 +88,9 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 
 #### Pre/Post section
 
-%post
+%post qtbluetooth
 /sbin/ldconfig
-%postun
+%postun qtbluetooth
 /sbin/ldconfig
 
 
