@@ -41,12 +41,12 @@ mobile and embedded systems without rewriting the source code.
 .
 This package contains the QtBluetooth module
 
-%package qtbluetooth-devel
+%package qtbluetooth
 Summary:    QtBluetooth - development files
 Group:      Qt/Qt
 Requires:   %{name}-qtbluetooth = %{version}-%{release}
 
-%description devel
+%description qtbluetooth-devel
 Qt is a cross-platform application and UI framework. Using Qt, you can
 write web-enabled applications once and deploy them across desktop,
 mobile and embedded systems without rewriting the source code.
