@@ -61,7 +61,8 @@ This package contains the QtBluetooth development files
 export QTDIR=/usr/share/qt5
 touch .git
 
-qmake -qt=5
+qmake -qt=5 "CONFIG += nfc"
+
 make %{?_smp_flags}
 
 %install
