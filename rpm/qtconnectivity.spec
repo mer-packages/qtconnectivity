@@ -28,7 +28,6 @@ mobile and embedded systems without rewriting the source code.
 This package contains the Qt connectivity module
 
 
-
 %package qtbluetooth
 Summary:    QtBluetooth
 Group:      Qt/Qt
@@ -41,7 +40,7 @@ mobile and embedded systems without rewriting the source code.
 .
 This package contains the QtBluetooth module
 
-%package qtbluetooth
+%package qtbluetooth-devel
 Summary:    QtBluetooth - development files
 Group:      Qt/Qt
 Requires:   %{name}-qtbluetooth = %{version}-%{release}
