@@ -15,6 +15,8 @@ BuildRequires:  qt5-qtdeclarative-devel
 BuildRequires:  qt5-qtdeclarative-qtquick-devel
 BuildRequires:  qt5-qmake
 BuildRequires:  qt5-qtv8-devel
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:	pkgconfig(bluez)
 BuildRequires:  fdupes
 
 %description
