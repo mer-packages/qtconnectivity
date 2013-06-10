@@ -28,8 +28,9 @@ mobile and embedded systems without rewriting the source code.
 This package contains the Qt connectivity module
 
 
-%package devel
-Summary:    Qt connectivity - development files
+
+%package qtbluetooth
+Summary:    QtBluetooth
 Group:      Qt/Qt
 Requires:   %{name} = %{version}-%{release}
 
@@ -38,7 +39,19 @@ Qt is a cross-platform application and UI framework. Using Qt, you can
 write web-enabled applications once and deploy them across desktop,
 mobile and embedded systems without rewriting the source code.
 .
-This package contains the Qt connectivity module development files
+This package contains the QtBluetooth module
+
+%package qtbluetooth-devel
+Summary:    QtBluetooth - development files
+Group:      Qt/Qt
+Requires:   %{name}-qtbluetooth = %{version}-%{release}
+
+%description devel
+Qt is a cross-platform application and UI framework. Using Qt, you can
+write web-enabled applications once and deploy them across desktop,
+mobile and embedded systems without rewriting the source code.
+.
+This package contains the QtBluetooth development files
 
 #### Build section
 
@@ -87,10 +100,20 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 #### File section
 
 
-%files
+%files qtbluetooth
 %defattr(-,root,root,-)
+%{_libdir}/libQt5Bluetooth.so.0
+%{_libdir}/libQt5Location.so.0.*
+%{_libdir}/qt5/qml/QtBluetooth
 
-%files devel
+%files qtbluetooth-devel
 %defattr(-,root,root,-)
+%{_libdir}/libQt5Bluetooth.so
+%{_libdir}/libQt5Bluetooth.prl
+%{_libdir}/pkgconfig/*
+%{_includedir}/qt5/*
+%{_datadir}/qt5/mkspecs/
+%{_libdir}/cmake/Qt5Bluetooth/
+
 
 #### No changelog section, separate $pkg.changelog contains the history
