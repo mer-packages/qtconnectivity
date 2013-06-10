@@ -52,6 +52,31 @@ mobile and embedded systems without rewriting the source code.
 .
 This package contains the QtBluetooth development files
 
+%package qtnfc
+Summary:    QtNfc
+Group:      Qt/Qt
+Requires:   %{name} = %{version}-%{release}
+
+%description qtnfc
+Qt is a cross-platform application and UI framework. Using Qt, you can
+write web-enabled applications once and deploy them across desktop,
+mobile and embedded systems without rewriting the source code.
+.
+This package contains the QtNfc module
+
+%package qtnfc-devel
+Summary:    QtNfc - development files
+Group:      Qt/Qt
+Requires:   %{name}-qtbluetooth = %{version}-%{release}
+
+%description qtnfc-devel
+Qt is a cross-platform application and UI framework. Using Qt, you can
+write web-enabled applications once and deploy them across desktop,
+mobile and embedded systems without rewriting the source code.
+.
+This package contains the QtNfc development files
+
+
 #### Build section
 
 %prep
@@ -94,6 +119,11 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 %postun qtbluetooth
 /sbin/ldconfig
 
+%post qtnfc
+/sbin/ldconfig
+%postun qtnfc
+/sbin/ldconfig
+
 
 
 
@@ -112,7 +142,22 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 %{_libdir}/libQt0Bluetooth.prl
 %{_libdir}/pkgconfig/*
 %{_includedir}/qt5/*
-%{_datadir}/qt5/mkspecs/
+%{_datadir}/qt5/mkspecs/modules/qt_lib_bluetooth.pri
 %{_libdir}/cmake/Qt5Bluetooth/
+
+%files qtnfc
+%defattr(-,root,root,-)
+%{_libdir}/libQt0Nfc.so.0
+%{_libdir}/libQt0Nfc.so.0.*
+%{_libdir}/qt5/qml/QtNfc
+
+%files qtnfc-devel
+%defattr(-,root,root,-)
+%{_libdir}/libQt0Nfc.so
+%{_libdir}/libQt0Nfc.prl
+%{_libdir}/pkgconfig/*
+%{_includedir}/qt5/*
+%{_datadir}/qt5/mkspecs/modules/qt_lib_nfc.pri
+%{_libdir}/cmake/Qt5Nfc/
 
 
