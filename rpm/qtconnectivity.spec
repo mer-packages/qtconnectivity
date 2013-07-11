@@ -31,7 +31,6 @@ This package contains the Qt connectivity module
 %package qtbluetooth
 Summary:    QtBluetooth
 Group:      Qt/Qt
-Requires:   %{name} = %{version}-%{release}
 
 %description qtbluetooth
 Qt is a cross-platform application and UI framework. Using Qt, you can
@@ -55,7 +54,6 @@ This package contains the QtBluetooth development files
 %package qtnfc
 Summary:    QtNfc
 Group:      Qt/Qt
-Requires:   %{name} = %{version}-%{release}
 
 %description qtnfc
 Qt is a cross-platform application and UI framework. Using Qt, you can
@@ -67,7 +65,7 @@ This package contains the QtNfc module
 %package qtnfc-devel
 Summary:    QtNfc - development files
 Group:      Qt/Qt
-Requires:   %{name}-qtbluetooth = %{version}-%{release}
+Requires:   %{name}-qtnfc = %{version}-%{release}
 
 %description qtnfc-devel
 Qt is a cross-platform application and UI framework. Using Qt, you can
@@ -80,7 +78,7 @@ This package contains the QtNfc development files
 #### Build section
 
 %prep
-%setup -q -n %{name}-%{version}/qtconnectivity 
+%setup -q -n %{name}-%{version}/qtconnectivity
 
 %build
 export QTDIR=/usr/share/qt5
