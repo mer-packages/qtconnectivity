@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -61,6 +61,7 @@ public:
 private slots:
     void tst_parse_data();
     void tst_parse();
+    void messageParsingFromByteArray();
 };
 
 tst_QNdefMessage::tst_QNdefMessage()
@@ -173,6 +174,7 @@ void tst_QNdefMessage::tst_parse_data()
         QList<QNdefRecord> recordList;
         recordList.append(record);
         QTest::newRow("chunked") << data << QNdefMessage(recordList) << QVariantList();
+        QCOMPARE(qHash(record), 1887494681LL);
     }
 
     // NFC-RTD Text
@@ -202,6 +204,7 @@ void tst_QNdefMessage::tst_parse_data()
         QTest::newRow("nfc-rtd text") << data << QNdefMessage(recordList)
                                       << (QVariantList() << QLatin1String("Test String")
                                                          << QLatin1String("en"));
+        QCOMPARE(qHash(record), 3247259560LL);
     }
 
     // NFC-RTD Text
@@ -233,6 +236,7 @@ void tst_QNdefMessage::tst_parse_data()
             << (QVariantList() << QString::fromUtf8("\343\203\206\343\202\271\343\203\210\346\226"
                                                     "\207\345\255\227\345\210\227")
                                << QLatin1String("ja"));
+        QCOMPARE(qHash(record), 3407917933LL);
     }
 
     // NFC-RTD URI
@@ -261,6 +265,7 @@ void tst_QNdefMessage::tst_parse_data()
         QTest::newRow("nfc-rtd uri http://qt.nokia.com/")
             << data << QNdefMessage(recordList)
             << (QVariantList() << QUrl(QLatin1String("http://qt.nokia.com/")));
+        QCOMPARE(qHash(record), 4030951038LL);
     }
 
     // NFC-RTD URI
@@ -289,6 +294,7 @@ void tst_QNdefMessage::tst_parse_data()
         QTest::newRow("nfc-rtd uri abbrev http://qt.nokia.com/")
             << data << QNdefMessage(recordList)
             << (QVariantList() << QUrl(QLatin1String("http://qt.nokia.com/")));
+        QCOMPARE(qHash(record), 132405495LL);
     }
 
     // NFC-RTD URI
@@ -317,6 +323,7 @@ void tst_QNdefMessage::tst_parse_data()
         QTest::newRow("nfc-rtd uri tel:+1234567890")
             << data << QNdefMessage(recordList)
             << (QVariantList() << QUrl(QLatin1String("tel:+1234567890")));
+        QCOMPARE(qHash(record), 3757269174LL);
     }
 
     // Truncated message
@@ -413,6 +420,45 @@ void tst_QNdefMessage::tst_parse()
             QVERIFY(record.isEmpty());
         }
     }
+}
+
+void tst_QNdefMessage::messageParsingFromByteArray()
+{
+    const QByteArray reference("1234567890");
+    QNdefMessage message;
+    QNdefRecord first;
+    QVERIFY(first.isEmpty());
+    first.setTypeNameFormat(QNdefRecord::Uri);
+    QVERIFY(first.isEmpty());
+    first.setPayload(reference);
+    QCOMPARE(first.payload(), reference);
+    QVERIFY(!first.isEmpty());
+    QCOMPARE(first.typeNameFormat(), QNdefRecord::Uri);
+
+    message.append(first);
+
+    QNdefRecord second;
+
+    QCOMPARE(second.payload(), QByteArray());
+    QVERIFY(second.isEmpty());
+    QCOMPARE(second.typeNameFormat(), QNdefRecord::Empty);
+
+    message.append(second);
+
+    QByteArray result = message.toByteArray();
+    QNdefMessage messageCopy = QNdefMessage::fromByteArray(result);
+    QCOMPARE(messageCopy.size(), 2);
+
+    first = messageCopy.at(0);
+    second = messageCopy.at(1);
+
+    QCOMPARE(first.payload(), reference);
+    QVERIFY(!first.isEmpty());
+    QCOMPARE(first.typeNameFormat(), QNdefRecord::Uri);
+    QCOMPARE(second.payload(), QByteArray());
+    QVERIFY(second.isEmpty());
+    QCOMPARE(second.typeNameFormat(), QNdefRecord::Empty);
+
 }
 
 QTEST_MAIN(tst_QNdefMessage)

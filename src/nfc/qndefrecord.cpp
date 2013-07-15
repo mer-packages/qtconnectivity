@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -72,7 +72,7 @@ QT_BEGIN_NAMESPACE_NFC
     to test if a conversion is possible.  The following example shows how to test if a QNdefRecord
     is an NFC RTD Text record and extract the text information from it.
 
-    \snippet ../doc/src/snippets/nfc.cpp Record conversion
+    \snippet nfc.cpp Record conversion
 
     \section1 Creating specialized NDEF record classes
 
@@ -81,7 +81,7 @@ QT_BEGIN_NAMESPACE_NFC
     declaration of the hypothetical \e {example.com:f} record type that encapsulates a single int
     property foo.
 
-    \snippet ../doc/src/snippets/nfc.cpp Specialized class definition
+    \snippet nfc.cpp Specialized class definition
 
     The developer only needs to provide implementations for the \c {foo()} and \c {setFoo()}
     functions that parse and set the contents of the NDEF record's payload.
@@ -185,6 +185,23 @@ QNdefRecord::QNdefRecord(const QNdefRecord &other, TypeNameFormat typeNameFormat
         d = new QNdefRecordPrivate;
         d->typeNameFormat = typeNameFormat;
         d->type = type;
+    }
+}
+
+/*!
+    \internal
+
+    Constructs an NDEF record that is a copy of \a other if \a other is of the expected type name
+    format identified by \a typeNameFormat; otherwise an empty NDEF record of the expected type
+    name format and type is created.
+*/
+QNdefRecord::QNdefRecord(const QNdefRecord &other, TypeNameFormat typeNameFormat)
+{
+    if (other.d->typeNameFormat == quint8(typeNameFormat)) {
+        d = other.d;
+    } else {
+        d = new QNdefRecordPrivate;
+        d->typeNameFormat = typeNameFormat;
     }
 }
 

@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -43,23 +43,21 @@
 #ifndef QBLUETOOTH_H
 #define QBLUETOOTH_H
 
-#include "qbluetoothglobal.h"
+#include <QtBluetooth/qbluetoothglobal.h>
 
 QT_BEGIN_NAMESPACE_BLUETOOTH
 
 namespace QBluetooth {
-enum Security {
-    NoSecurity = 0x00,
-    Authorization = 0x01,
-    Authentication = 0x02,
-    Encryption = 0x04,
-    Secure = 0x08
-};
+    enum Security {
+        NoSecurity = 0x00,
+        Authorization = 0x01,
+        Authentication = 0x02,
+        Encryption = 0x04,
+        Secure = 0x08
+    };
 
-Q_DECLARE_FLAGS(SecurityFlags, Security)
-
-Q_DECLARE_OPERATORS_FOR_FLAGS(SecurityFlags)
-
+    Q_DECLARE_FLAGS(SecurityFlags, Security)
+    Q_DECLARE_OPERATORS_FOR_FLAGS(SecurityFlags)
 }
 
 QT_END_NAMESPACE_BLUETOOTH

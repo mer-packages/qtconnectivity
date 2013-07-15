@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -358,6 +358,11 @@ void QBluetoothLocalDevicePrivate::initializeAdapter()
         agent_path = agentPath;
         agent_path.append(QString::fromLatin1("/%1").arg(qrand()));
     }
+}
+
+bool QBluetoothLocalDevicePrivate::isValid() const
+{
+    return adapter;
 }
 
 void QBluetoothLocalDevicePrivate::RequestConfirmation(const QDBusObjectPath &in0, uint in1)

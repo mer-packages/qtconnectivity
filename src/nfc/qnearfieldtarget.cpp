@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -48,6 +48,9 @@
 #include <QtCore/QVariant>
 
 #include <QtCore/QDebug>
+
+#include <QTime>
+#include <QCoreApplication>
 
 QT_BEGIN_NAMESPACE_NFC
 
@@ -101,6 +104,7 @@ QT_BEGIN_NAMESPACE_NFC
 
     This enum describes the access methods a near field target supports.
 
+    \value UnknownAccess            The target supports an unknown access type.
     \value NdefAccess               The target supports reading and writing NDEF messages using
                                     readNdefMessages() and writeNdefMessages().
     \value TagTypeSpecificAccess    The target supports sending tag type specific commands using
@@ -395,11 +399,19 @@ QNearFieldTarget::RequestId QNearFieldTarget::sendCommands(const QList<QByteArra
 */
 bool QNearFieldTarget::waitForRequestCompleted(const RequestId &id, int msecs)
 {
-    Q_UNUSED(msecs);
-
     Q_D(QNearFieldTarget);
 
-    return d->m_decodedResponses.contains(id);
+    QTime timer;
+    timer.start();
+
+    do {
+        if (d->m_decodedResponses.contains(id))
+            return true;
+        else
+            QCoreApplication::processEvents(QEventLoop::WaitForMoreEvents, 1);
+    } while (timer.elapsed() <= msecs);
+
+    return false;
 }
 
 /*!

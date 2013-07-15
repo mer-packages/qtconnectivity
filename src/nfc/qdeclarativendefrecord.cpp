@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -71,11 +71,11 @@ QT_BEGIN_NAMESPACE_NFC
 
     For example the declaration of such a class may look like the following.
 
-    \snippet ../doc/src/snippets/foorecord.h Foo declaration
+    \snippet foorecord.h Foo declaration
 
     Within the implementation file the Q_DECLARE_NDEFRECORD() macro is expanded:
 
-    \snippet ../doc/src/snippets/foorecord.cpp Declare foo record
+    \snippet foorecord.cpp Declare foo record
 
     Finially the application or plugin code calls qmlRegisterType():
 
@@ -113,9 +113,21 @@ QT_BEGIN_NAMESPACE_NFC
 */
 
 /*!
+    \qmlproperty string NdefRecord::record
+
+    This property holds the NDEF record.
+*/
+
+/*!
     \fn void QDeclarativeNdefRecord::recordTypeChanged()
 
     This signal is emitted when the record type changes.
+*/
+
+/*!
+    \property QDeclarativeNdefRecord::record
+
+    This property hold the NDEF record that this class represents.
 */
 
 /*!
@@ -262,13 +274,18 @@ QNdefRecord QDeclarativeNdefRecord::record() const
 }
 
 /*!
-    Sets the record to \a record.
+    Sets the record to \a record. If the record is set the recordChanged() signal will
+    be emitted.
 */
 void QDeclarativeNdefRecord::setRecord(const QNdefRecord &record)
 {
     Q_D(QDeclarativeNdefRecord);
 
+    if (d->record == record)
+        return;
+
     d->record = record;
+    emit recordChanged();
 }
 
 QT_END_NAMESPACE_NFC

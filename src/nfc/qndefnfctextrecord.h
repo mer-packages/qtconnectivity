@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -50,7 +50,12 @@ QT_BEGIN_NAMESPACE_NFC
 class Q_NFC_EXPORT QNdefNfcTextRecord : public QNdefRecord
 {
 public:
+#ifndef Q_QDOC
     Q_DECLARE_NDEF_RECORD(QNdefNfcTextRecord, QNdefRecord::NfcRtd, "T", QByteArray(1, char(0)))
+#else
+    QNdefNfcTextRecord();
+    QNdefNfcTextRecord(const QNdefRecord& other);
+#endif
 
     QString locale() const;
     void setLocale(const QString &locale);

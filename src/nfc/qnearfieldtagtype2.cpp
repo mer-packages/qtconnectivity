@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -257,26 +257,6 @@ QNearFieldTarget::RequestId QNearFieldTagType2::selectSector(quint8 sector)
     d->m_pendingSectorSelectCommands.insert(id, state);
 
     return id;
-}
-
-/*!
-    \reimp
-*/
-bool QNearFieldTagType2::waitForRequestCompleted(const RequestId &id, int msecs)
-{
-    Q_D(QNearFieldTagType2);
-
-    QTime timer;
-    timer.start();
-    while (d->m_pendingSectorSelectCommands.contains(id)) {
-        QCoreApplication::processEvents(QEventLoop::WaitForMoreEvents, 1);
-
-        // detect passive ack
-        if (timer.elapsed() >= 1)
-            break;
-    }
-
-    return QNearFieldTarget::waitForRequestCompleted(id, msecs);
 }
 
 /*!

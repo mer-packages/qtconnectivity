@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -213,15 +213,34 @@ void tst_QBluetoothLocalDevice::tst_name()
 void tst_QBluetoothLocalDevice::tst_isValid()
 {
     QBluetoothLocalDevice localDevice;
-    QVERIFY(localDevice.isValid());
+    QBluetoothAddress invalidAddress("FF:FF:FF:FF:FF:FF");
 
-    /*
-    //TODO the above should really be the following once QBluetoothLocalDevice has been fixed
-    if (!QBluetoothLocalDevice::allDevices().count())
-        QVERIFY(!localDevice.isValid());
-    else
+    const QList<QBluetoothHostInfo> devices = QBluetoothLocalDevice::allDevices();
+    if (devices.count()) {
         QVERIFY(localDevice.isValid());
-    */
+        bool defaultFound = false;
+        for (int i = 0; i<devices.count(); i++) {
+            QVERIFY(devices.at(i).address() != invalidAddress);
+            if (devices.at(i).address() == localDevice.address() ) {
+                defaultFound = true;
+            } else {
+                QBluetoothLocalDevice otherDevice(devices.at(i).address());
+                QVERIFY(otherDevice.isValid());
+            }
+        }
+        QVERIFY(defaultFound);
+    } else {
+        QVERIFY(!localDevice.isValid());
+    }
+
+    //ensure common behavior of invalid local device
+    QBluetoothLocalDevice invalidLocalDevice(invalidAddress);
+    QVERIFY(!invalidLocalDevice.isValid());
+    QCOMPARE(invalidLocalDevice.address(), QBluetoothAddress());
+    QCOMPARE(invalidLocalDevice.name(), QString());
+    QCOMPARE(invalidLocalDevice.pairingStatus(QBluetoothAddress()), QBluetoothLocalDevice::Unpaired );
+    QCOMPARE(invalidLocalDevice.hostMode(), QBluetoothLocalDevice::HostPoweredOff);
+
 }
 void tst_QBluetoothLocalDevice::tst_allDevices()
 {

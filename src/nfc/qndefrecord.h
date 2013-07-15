@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -94,6 +94,7 @@ public:
 
 protected:
     QNdefRecord(const QNdefRecord &other, TypeNameFormat typeNameFormat, const QByteArray &type);
+    QNdefRecord(const QNdefRecord &other, TypeNameFormat typeNameFormat);
     QNdefRecord(TypeNameFormat typeNameFormat, const QByteArray &type);
 
 private:
@@ -112,7 +113,7 @@ private:
     } \
     QT_END_NAMESPACE_NFC
 
-uint qHash(const QNdefRecord &key);
+Q_NFC_EXPORT uint qHash(const QNdefRecord &key);
 
 QT_END_NAMESPACE_NFC
 

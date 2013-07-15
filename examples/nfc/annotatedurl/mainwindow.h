@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module.
@@ -45,9 +45,11 @@
 
 QT_FORWARD_DECLARE_CLASS(QUrl)
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
     class MainWindow;
 }
+QT_END_NAMESPACE
 
 class MainWindow : public QMainWindow
 {

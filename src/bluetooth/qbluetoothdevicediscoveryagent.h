@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -42,11 +42,11 @@
 #ifndef QBLUETOOTHDEVICEDISCOVERYAGENT_H
 #define QBLUETOOTHDEVICEDISCOVERYAGENT_H
 
-#include "qbluetoothglobal.h"
+#include <QtBluetooth/qbluetoothglobal.h>
 
 #include <QObject>
 
-#include <qbluetoothdeviceinfo.h>
+#include <QtBluetooth/QBluetoothDeviceInfo>
 
 QT_BEGIN_NAMESPACE_BLUETOOTH
 

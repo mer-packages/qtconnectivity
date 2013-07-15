@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -42,9 +42,9 @@
 #ifndef QBLUETOOTHSERVICEINFO_H
 #define QBLUETOOTHSERVICEINFO_H
 
-#include "qbluetoothglobal.h"
+#include <QtBluetooth/qbluetoothglobal.h>
 
-#include <qbluetoothuuid.h>
+#include <QtBluetooth/QBluetoothUuid>
 
 #include <QtCore/QMetaType>
 #include <QtCore/QList>
@@ -63,14 +63,22 @@ public:
     enum AttributeId {
         ServiceRecordHandle = 0x0000,
         ServiceClassIds = 0x0001,
+        ServiceRecordState = 0x0002,
         ServiceId = 0x0003,
         ProtocolDescriptorList = 0x0004,
         BrowseGroupList = 0x0005,
+        LanguageBaseAttributeIdList = 0x0006,
+        ServiceInfoTimeToLive = 0x0007,
         ServiceAvailability = 0x0008,
+        BluetoothProfileDescriptorList = 0x0009,
+        DocumentationUrl = 0x000A,
+        ClientExecutableUrl = 0x000B,
+        IconUrl = 0x000C,
+        AdditionalProtocolDescriptorList = 0x000D,
         PrimaryLanguageBase = 0x0100,
         ServiceName = PrimaryLanguageBase + 0x0000,
         ServiceDescription = PrimaryLanguageBase + 0x0001,
-        ServiceProvider = PrimaryLanguageBase + 0x0002,
+        ServiceProvider = PrimaryLanguageBase + 0x0002
     };
 
     enum Protocol {

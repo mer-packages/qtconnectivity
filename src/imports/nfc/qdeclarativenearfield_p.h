@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -49,10 +49,10 @@
 
 #include "qdeclarativendefrecord.h"
 
-class QDeclarativeNdefFilter;
 
 QT_USE_NAMESPACE_NFC
 
+class QDeclarativeNdefFilter;
 class QDeclarativeNearField : public QObject, public QQmlParserStatus
 {
     Q_OBJECT

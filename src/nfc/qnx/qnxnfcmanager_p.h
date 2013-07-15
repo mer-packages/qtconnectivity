@@ -39,7 +39,6 @@
 **
 ****************************************************************************/
 
-
 #ifndef QNXNFCMANAGER_H
 #define QNXNFCMANAGER_H
 
@@ -95,7 +94,7 @@ private:
     QList<QPair<nfc_llcp_connection_listener_t, QObject *> > llcpConnections;
     QList<QPair<unsigned int ,QObject*> > nfcTargets;
 
-    QHash<QObject *, QList<QByteArray>> ndefFilters;
+    QHash<QObject *, QList<QByteArray> > ndefFilters;
     QList<QByteArray> absNdefFilters;
 
     //QList<QPair<QObject*, QMetaMethod> > ndefMessageHandlers;
