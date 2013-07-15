@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -109,7 +109,7 @@ QString QBluetoothHostInfo::name() const
 }
 
 /*!
-    Sets the name of the host info object.
+    Sets the \a name of the host info object.
 */
 void QBluetoothHostInfo::setName(const QString &name)
 {

@@ -42,3 +42,4 @@
 import QtNfc 5.0
 //! [import]
 
+Item { }

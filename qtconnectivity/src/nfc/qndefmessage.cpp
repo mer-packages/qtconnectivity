@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -152,7 +152,7 @@ QNdefMessage QNdefMessage::fromByteArray(const QByteArray &message)
 
         quint32 payloadLength;
         if (sr)
-            payloadLength = *(++i);
+            payloadLength = quint8(*(++i));
         else {
             payloadLength = quint8(*(++i)) << 24;
             payloadLength |= quint8(*(++i)) << 16;
@@ -211,8 +211,10 @@ QNdefMessage QNdefMessage::fromByteArray(const QByteArray &message)
             i += payloadLength - 1;
         }
 
-        if (!cf)
+        if (!cf) {
             result.append(record);
+            record = QNdefRecord();
+        }
 
         if (!cf && seenMessageEnd)
             break;

@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -42,7 +42,7 @@
 #ifndef QBLUETOOTHLOCALDEVICE_P_H
 #define QBLUETOOTHLOCALDEVICE_P_H
 
-#include "qbluetoothglobal.h"
+#include <QtBluetooth/qbluetoothglobal.h>
 
 #include "qbluetoothlocaldevice.h"
 
@@ -100,6 +100,7 @@ public Q_SLOTS: // METHODS
     void pairingCompleted(QDBusPendingCallWatcher*);
 
     void PropertyChanged(QString,QDBusVariant);
+    bool isValid() const;
 
 private:
     QDBusMessage msgConfirmation;
@@ -132,13 +133,22 @@ public:
     void setAccess(int);
 
     Q_INVOKABLE void controlReply(ppsResult res);
+    Q_INVOKABLE void controlEvent(ppsResult res);
+
+    bool isValid() const;
 
 private:
     QBluetoothLocalDevice *q_ptr;
+    bool isValidDevice;
 };
 #else
 class QBluetoothLocalDevicePrivate : public QObject
 {
+public:
+    bool isValid() const
+    {
+        return false;
+    }
 };
 #endif
 

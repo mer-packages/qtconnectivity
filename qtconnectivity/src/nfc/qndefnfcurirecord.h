@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -52,7 +52,12 @@ QT_BEGIN_NAMESPACE_NFC
 class Q_NFC_EXPORT QNdefNfcUriRecord : public QNdefRecord
 {
 public:
+#ifndef Q_QDOC
     Q_DECLARE_NDEF_RECORD(QNdefNfcUriRecord, QNdefRecord::NfcRtd, "U", QByteArray(0, char(0)))
+#else
+    QNdefNfcUriRecord();
+    QNdefNfcUriRecord(const QNdefRecord& other);
+#endif
 
     QUrl uri() const;
     void setUri(const QUrl &uri);

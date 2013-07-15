@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -42,8 +42,8 @@
 #ifndef QL2CAPSERVER_P_H
 #define QL2CAPSERVER_P_H
 
-#include "qbluetoothglobal.h"
-#include <qbluetoothsocket.h>
+#include <QtBluetooth/qbluetoothglobal.h>
+#include <QtBluetooth/QBluetoothSocket>
 
 #ifdef QT_BLUEZ_BLUETOOTH
 QT_FORWARD_DECLARE_CLASS(QSocketNotifier)

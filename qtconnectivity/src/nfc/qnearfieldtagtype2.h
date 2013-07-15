@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -70,8 +70,6 @@ public:
     virtual RequestId readBlock(quint8 blockAddress);
     virtual RequestId writeBlock(quint8 blockAddress, const QByteArray &data);
     virtual RequestId selectSector(quint8 sector);
-
-    bool waitForRequestCompleted(const RequestId &id, int msecs = 5000);
 
     void timerEvent(QTimerEvent *event);
 

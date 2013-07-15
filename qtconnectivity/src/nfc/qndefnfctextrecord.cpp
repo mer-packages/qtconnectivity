@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -66,6 +66,18 @@ QT_BEGIN_NAMESPACE_NFC
 */
 
 /*!
+    \fn QNdefNfcTextRecord::QNdefNfcTextRecord()
+
+    Constructs an empty NFC text record of type \l QNdefRecord::NfcRtd.
+*/
+
+/*!
+    \fn QNdefNfcTextRecord::QNdefNfcTextRecord(const QNdefRecord& other)
+
+    Constructs a new NFC text record that is a copy of \a other.
+*/
+
+/*!
     Returns the locale of the text record.
 */
 QString QNdefNfcTextRecord::locale() const
@@ -118,7 +130,7 @@ QString QNdefNfcTextRecord::text() const
 
     QTextCodec *codec = QTextCodec::codecForName(utf16 ? "UTF-16BE" : "UTF-8");
 
-    return codec->toUnicode(p.constData() + 1 + codeLength, p.length() - 1 - codeLength);
+    return codec ? codec->toUnicode(p.constData() + 1 + codeLength, p.length() - 1 - codeLength) : QString();
 }
 
 /*!

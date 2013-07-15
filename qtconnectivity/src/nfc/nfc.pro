@@ -6,11 +6,6 @@ load(qt_module)
 QMAKE_DOCS = $$PWD/doc/qtnfc.qdocconf
 OTHER_FILES += doc/src/*.qdoc   # show .qdoc files in Qt Creator
 
-# All classes in this module are in the QtNfc namespace.  Define the namespace which moc generated
-# code will be in.
-DEFINES += QT_BEGIN_MOC_NAMESPACE=\""namespace QtNfc {"\"
-DEFINES += QT_END_MOC_NAMESPACE=\""}"\"
-
 PUBLIC_HEADERS += \
     qnfcglobal.h \
     qnearfieldmanager.h \
@@ -26,14 +21,16 @@ PUBLIC_HEADERS += \
     qnearfieldtagtype3.h \
     qnearfieldtagtype4.h \
     qllcpserver.h \
-    qdeclarativendefrecord.h
+    qdeclarativendefrecord.h \
+    qndefnfcsmartposterrecord.h
 
 PRIVATE_HEADERS += \
     qndefrecord_p.h \
     qnearfieldtarget_p.h \
     qnearfieldmanager_p.h \
     qtlv_p.h \
-    checksum_p.h
+    checksum_p.h \
+    qndefnfcsmartposterrecord_p.h
 
 SOURCES += \
     qnearfieldmanager.cpp \
@@ -50,7 +47,8 @@ SOURCES += \
     qnearfieldtagtype4.cpp \
     qtlv.cpp \
     qllcpserver.cpp \
-    qdeclarativendefrecord.cpp
+    qdeclarativendefrecord.cpp \
+    qndefnfcsmartposterrecord.cpp
 
 maemo6|meego {
     NFC_BACKEND_AVAILABLE = yes

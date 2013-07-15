@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -77,9 +77,10 @@ public:
     };
 
     enum AccessMethod {
-        NdefAccess,
-        TagTypeSpecificAccess,
-        LlcpAccess
+        UnknownAccess = 0x00,
+        NdefAccess = 0x01,
+        TagTypeSpecificAccess = 0x02,
+        LlcpAccess = 0x04
     };
     Q_DECLARE_FLAGS(AccessMethods, AccessMethod)
 

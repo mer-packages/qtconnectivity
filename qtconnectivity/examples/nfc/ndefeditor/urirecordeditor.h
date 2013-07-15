@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtNfc module of the Qt Toolkit.
@@ -46,9 +46,11 @@
 
 #include <qndefnfcurirecord.h>
 
+QT_BEGIN_NAMESPACE
 namespace Ui {
     class UriRecordEditor;
 }
+QT_END_NAMESPACE
 
 QT_USE_NAMESPACE_NFC
 

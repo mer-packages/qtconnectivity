@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -42,7 +42,7 @@
 #ifndef QBLUETOOTHUUID_H
 #define QBLUETOOTHUUID_H
 
-#include "qbluetoothglobal.h"
+#include <QtBluetooth/qbluetoothglobal.h>
 
 #include <QtCore/QtGlobal>
 #include <QtCore/QMetaType>
@@ -67,6 +67,7 @@ public:
         Tcp = 0x0004,
         TcsBin = 0x0005,
         TcsAt = 0x0006,
+        Att = 0x0007,
         Obex = 0x0008,
         Ip = 0x0009,
         Ftp = 0x000A,

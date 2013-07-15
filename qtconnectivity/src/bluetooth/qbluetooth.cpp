@@ -1,6 +1,6 @@
 /****************************************************************************
 **
-** Copyright (C) 2012 Digia Plc and/or its subsidiary(-ies).
+** Copyright (C) 2013 Digia Plc and/or its subsidiary(-ies).
 ** Contact: http://www.qt-project.org/legal
 **
 ** This file is part of the QtBluetooth module of the Qt Toolkit.
@@ -41,7 +41,7 @@
 
 #include <QtBluetooth/qbluetooth.h>
 
-QT_BEGIN_NAMESPACE
+QT_BEGIN_NAMESPACE_BLUETOOTH
 
 namespace QBluetooth {
 
@@ -76,4 +76,4 @@ namespace QBluetooth {
 */
 }
 
-QT_END_NAMESPACE
+QT_END_NAMESPACE_BLUETOOTH
