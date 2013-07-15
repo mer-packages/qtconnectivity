@@ -130,14 +130,14 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 
 %files qtbluetooth
 %defattr(-,root,root,-)
-%{_libdir}/libQt0Bluetooth.so.0
-%{_libdir}/libQt0Bluetooth.so.0.*
+%{_libdir}/libQt5Bluetooth.so.5
+%{_libdir}/libQt5Bluetooth.so.5.*
 %{_libdir}/qt5/qml/QtBluetooth
 
 %files qtbluetooth-devel
 %defattr(-,root,root,-)
-%{_libdir}/libQt0Bluetooth.so
-%{_libdir}/libQt0Bluetooth.prl
+%{_libdir}/libQt5Bluetooth.so
+%{_libdir}/libQt5Bluetooth.prl
 %{_libdir}/pkgconfig/*
 %{_includedir}/qt5/*
 %{_datadir}/qt5/mkspecs/modules/qt_lib_bluetooth.pri
@@ -145,14 +145,14 @@ rm -rf %{buildroot}/%{_includedir}/qt5/Qt
 
 %files qtnfc
 %defattr(-,root,root,-)
-%{_libdir}/libQt0Nfc.so.0
-%{_libdir}/libQt0Nfc.so.0.*
+%{_libdir}/libQt5Nfc.so.5
+%{_libdir}/libQt5Nfc.so.5.*
 %{_libdir}/qt5/qml/QtNfc
 
 %files qtnfc-devel
 %defattr(-,root,root,-)
-%{_libdir}/libQt0Nfc.so
-%{_libdir}/libQt0Nfc.prl
+%{_libdir}/libQt5Nfc.so
+%{_libdir}/libQt5Nfc.prl
 %{_libdir}/pkgconfig/*
 %{_includedir}/qt5/*
 %{_datadir}/qt5/mkspecs/modules/qt_lib_nfc.pri
