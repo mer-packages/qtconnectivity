@@ -86,7 +86,7 @@ touch .git
 
 qmake -qt=5 "CONFIG += nfc"
 
-make %{?_smp_flags}
+make %{?_smp_mflags}
 
 %install
 rm -rf %{buildroot}
